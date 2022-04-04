@@ -14,4 +14,6 @@ use App\Http\Controllers\myController;
 */
 
 Route::get('/', [myController::class,'index']);
-Route::post('register', [myController::class,'register']);
+Route::get('/store', [MyController2::class,'store']);
+Route::get('/product', [MyController2::class,'product']);
+Route::post('/register', [myController::class,'register']);
