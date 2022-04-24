@@ -15,7 +15,7 @@ class CreateManufacturesTable extends Migration
     {
         Schema::create('manufactures', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('manu_name');
+            $table->string('manu_name',200);
             $table->integer('qty');
             $table->timestamps();
         });
