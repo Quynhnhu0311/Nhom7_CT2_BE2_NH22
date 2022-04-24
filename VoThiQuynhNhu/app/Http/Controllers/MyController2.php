@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 class MyController2 extends Controller
 {
     function index() {
-        return view('index');
+        $products = Product::where('id','<',30)->get();
+        $topSell = Product::where('manu_id','<',2)->get();
+        return view('index',['topSelling'=>$topSell],['data'=>$products]);
     }
 
     function register(Request $request){
