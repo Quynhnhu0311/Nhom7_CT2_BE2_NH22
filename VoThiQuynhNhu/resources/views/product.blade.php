@@ -1,28 +1,5 @@
 @extends('master')
 @section('content')
-		<!-- NAVIGATION -->
-		<nav id="navigation">
-			<!-- container -->
-			<div class="container">
-				<!-- responsive-nav -->
-				<div id="responsive-nav">
-					<!-- NAV -->
-					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="/">Home</a></li>
-						<li><a href="/store">Hot Deals</a></li>
-						<li><a href="/product">Categories</a></li>
-						<li><a href="#">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
-					</ul>
-					<!-- /NAV -->
-				</div>
-				<!-- /responsive-nav -->
-			</div>
-			<!-- /container -->
-		</nav>
-		<!-- /NAVIGATION -->
 
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
@@ -49,26 +26,17 @@
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
+
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+                    <form action="" method="post">
+                    @foreach($detailProduct as $row => $detail)
 					<!-- Product main img -->
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="./img/product01.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product08.png" alt="">
+								<img src="./img/{{ $detail->image }}" alt="">
 							</div>
 						</div>
 					</div>
@@ -78,28 +46,17 @@
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="./img/product01.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product08.png" alt="">
+								<img src="./img/{{ $detail->image }}" alt="">
 							</div>
 						</div>
 					</div>
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
+
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">product name goes here</h2>
+							<h2 class="product-name">{{ $detail->name }}</h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -111,10 +68,10 @@
 								<a class="review-link" href="#">10 Review(s) | Add your review</a>
 							</div>
 							<div>
-								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
+								<h3 class="product-price">{{ number_format($detail->price) }}<del class="product-old-price">$990.00</del></h3>
 								<span class="product-available">In Stock</span>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>{{ $detail->discription }}</p>
 
 							<div class="product-options">
 								<label>
@@ -164,6 +121,7 @@
 
 						</div>
 					</div>
+					</form>
 					<!-- /Product details -->
 
 					<!-- Product tab -->
@@ -183,7 +141,7 @@
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p>{{ $detail->discription }}</p>
 										</div>
 									</div>
 								</div>
@@ -376,13 +334,16 @@
 								</div>
 								<!-- /tab3  -->
 							</div>
+
 							<!-- /product tab content  -->
 						</div>
 					</div>
 					<!-- /product tab -->
+                    @endforeach
 				</div>
 				<!-- /row -->
 			</div>
+
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
