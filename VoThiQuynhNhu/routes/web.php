@@ -13,7 +13,7 @@ use App\Http\Controllers\myController;
 |
 */
 
-Route::get('/', [myController::class,'index']);
-Route::get('/store', [MyController2::class,'store']);
-Route::get('/product', [MyController2::class,'product']);
-Route::post('/register', [myController::class,'register']);
+Route::get('/', [MyController2::class,'index'])->name('homepage');
+Route::get('/store/{type_id}', [MyController2::class,'store']);
+Route::get('/product/{id}', [MyController2::class,'product']);
+Route::post('/register', [MyController2::class,'register']);
