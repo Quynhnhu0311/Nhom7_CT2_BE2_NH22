@@ -1,0 +1,6 @@
+{
+    "require": {
+        "darryldecode/cart": "^4.2",
+        "laravel/jetstream": "^2.8"
+    }
+}
