@@ -30,6 +30,8 @@ class CheckoutController extends Controller
         $type_product = DB::table('protypes')->orderby('id','desc')->get();
         $manu_product = DB::table('manufactures')->orderby('id','desc')->get();
 
+
+
         $data = $request->all();
         $shipping = new Shipping;
         $shipping->name = $data['shipping_name'];
@@ -49,6 +51,12 @@ class CheckoutController extends Controller
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $order['created_at'] = now();
         $order->save();
+
+        // if(Session::get('coupon')==true){
+        //     $coupon = DB::table('coupons')->where('coupon_code',$order->order_code)->first();
+        //     $coupon->coupon_time = $coupon->coupon_time - 1;
+        //     $coupon->save();
+        // }
 
         if(Session::get('cart')){
             foreach(Session::get('cart') as $key => $cart){

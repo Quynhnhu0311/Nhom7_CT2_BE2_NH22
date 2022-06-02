@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiscountTable extends Migration
+class CreateStatistical extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateDiscountTable extends Migration
      */
     public function up()
     {
-        Schema::create('discount', function (Blueprint $table) {
+        Schema::create('statistical', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_SP');
-            $table->dateTime('date_start');
-            $table->dateTime('date_end');
+            $table->dateTime('order_date');
+            $table->double('sales');
+            $table->double('profit');
+            $table->integer('quantity');
+            $table->integer('total_order');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateDiscountTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('discount');
+        Schema::dropIfExists('statistical');
     }
 }

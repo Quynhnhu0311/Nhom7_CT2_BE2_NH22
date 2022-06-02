@@ -28,6 +28,8 @@ class ProtypeController extends Controller
 
         $type_product = DB::table('protypes')->orderby('id','desc')->get();
         $manu_product = DB::table('manufactures')->orderby('id','desc')->get();
+        $type_qty = DB::table('protypes')->get()->count();
+        $manu_qty = DB::table('manufactures')->get()->count();
 
 
         //$type_by_id_product = Product::with('protypes')->where('type_id',$id)->orderBy('id','DESC');
@@ -50,7 +52,9 @@ class ProtypeController extends Controller
                                 ->with('min_price',$min_price)
                                 ->with('max_price',$max_price)
                                 ->with('max_price_range',$max_price_range)
-                                ->with('min_price_range',$min_price_range);
+                                ->with('min_price_range',$min_price_range)
+                                ->with('type_qty',$type_qty)
+                                ->with('manu_qty',$manu_qty);
     }
 
 }

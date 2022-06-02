@@ -43,10 +43,11 @@
                                 <th class="p-name" style="text-align: center;">STT</th>
                                 <th style="text-align: center;">Order Code</th>
                                 <th style="text-align: center;">Order Date</th>
+                                <th style="text-align: center;">Status</th>
                                 <th style="text-align: center;">Action</th>
                             </tr>
                             <?php
-                                $i = 0;
+                                $i = 1;
                             ?>
                             @foreach($getOrder as $key => $getod)
                             <tr>
@@ -57,6 +58,11 @@
                                     {{ $getod->order_code }}
                                 </td>
                                 <td class="p-price first-row">{{ $getod->created_at }}</td>
+                                @if($getod->order_status==1)
+                                <td class="p-price first-row">Đang chờ xử lý</td>
+                                @else
+                                <td class="p-price first-row">Đang giao hàng</td>
+                                @endif
                                 <td class="qua-col first-row">
                                     <a class="btn btn-primary btn-sm" href="/view-history-order/{{ $getod->order_code }}" style="width: 76px;">
                                         <i class="fa fa-eye"></i>

@@ -29,6 +29,10 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -338,6 +342,114 @@
     <script src="{{ asset('js/demo.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('js/pages/dashboard.js')}}"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $( "#datepicker" ).datepicker({
+                dateFormat : "yy-mm-dd"
+            });
+            $( "#datepicker2" ).datepicker({
+                dateFormat : "yy-mm-dd"
+            });
+
+            $( "#btn-dashboard-filter" ).click(function() {
+                var _token = $('input[name="_token"]').val();
+                var from_date = $('#datepicker').val();
+                var to_date = $('#datepicker2').val();
+
+                $.ajax({
+                    url:"{{ url('/filter-by-date') }}",
+                    method: "POST",
+                    dataType : "JSON",
+                    data : {from_date:from_date,to_date:to_date,_token:_token},
+                    success: function(data){
+                        chart.setData(data);
+                    }
+                });
+            });
+
+            var chart = new Morris.Bar({
+                element: 'myfirstchart',
+                lineColors: ['#819C79','#fc8710','#FF6541','#A4ADD3','#766B56'],
+                parseTime: false,
+                hideHover: 'auto',
+                data : [
+                    {period: '2018', order: '50', sales: 10000000, profit: 5500000, quantity: 5},
+                    {period: '2019', order: '51', sales: 5000000, profit: 1000000, quantity: 2},
+                    {period: '2020', order: '52', sales: 6500000, profit: 1200000, quantity: 3},
+                    {period: '2021', order: '53', sales: 8250000, profit: 3600000, quantity: 4},
+                    {period: '2022', order: '54', sales: 12000000, profit: 7000000, quantity: 7}
+                ],
+                xkey: 'period',
+                ykeys: ['order','sales','profit','quantity'],
+                labels: ['Đơn hàng','Doanh số','Lợi nhuận','Số lượng']
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var colorDanger = "#FF1744";
+            Morris.Donut({
+            element: 'donut',
+            resize: true,
+            colors: [
+                '#E0F7FA',
+                '#B2EBF2',
+                '#80DEEA',
+                '#4DD0E1',
+                '#26C6DA',
+                '#00BCD4',
+                '#00ACC1',
+                '#0097A7',
+                '#00838F',
+                '#006064'
+            ],
+            data: [
+                {label:"Products", value:<?php echo $product ?>, color:colorDanger},
+                {label:"Protypes", value:<?php echo $protype ?>},
+                {label:"Manufactures", value:<?php echo $manufacture ?>}
+            ]
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('.order_details').change(function(){
+            var order_status = $(this).val();
+            var order_id = $(this).children(":selected").attr("id");
+            var _token = $('input[name="_token"]').val();
+            quantity = [];
+            $("input[name='product_quantity']").each(function() {
+                quantity.push($(this).val());
+            });
+
+            order_product_id = [];
+            $("input[name='order_product_id']").each(function() {
+                order_product_id.push($(this).val());
+            });
+
+
+            $.ajax({
+                url:"{{ url('/update-cart') }}",
+                method: "POST",
+                dataType : "JSON",
+                data : {order_status:order_status,order_id:order_id,_token:_token,quantity:quantity,order_product_id:order_product_id},
+                success: function(data){
+                    alert('Đã cập nhật');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>

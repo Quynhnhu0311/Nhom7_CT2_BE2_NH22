@@ -38,8 +38,11 @@
                             <th style="width: 1%">
                                 STT
                             </th>
+                            <th style="width: 22%">
+                                Code Order
+                            </th>
                             <th style="width: 35%">
-                                Code Orders
+                                Date Order
                             </th>
                             <th style="width: 25%">
                                 Status
@@ -57,11 +60,12 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $ord->order_code }}</td>
+                                <td>{{ $ord->created_at }}</td>
                                 <td class="project_progress">
                                     @if($ord->order_status == 1)
                                         Đơn hàng mới
                                     @elseif($ord->order_status == 2)
-                                        Đơn hàng đang được xử lý
+                                        Đã xử lý - Đã giao hàng
                                     @endif
                                 </td>
                                 <td class="project-actions text-center">

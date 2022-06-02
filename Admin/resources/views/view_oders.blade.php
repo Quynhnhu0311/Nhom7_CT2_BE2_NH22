@@ -20,8 +20,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Buyer Info</h3>
-
+                <h3 class="card-title" style="font-weight:bold;">Buyer Info</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -71,7 +70,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Shipping Info</h3>
+                <h3 class="card-title" style="font-weight:bold;">Shipping Info</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -131,7 +130,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Cart Info</h3>
+                <h3 class="card-title" style="font-weight:bold;">Cart Info</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -173,11 +172,18 @@
                                 $total = 0;
                                 $subtotal = $order_details->product_price*$order_details->product_qty;
                                 $total += $subtotal;
+
                             ?>
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $order_details->product_name }}</td>
-                                <td style="text-align:center">{{ $order_details->product_qty }}</td>
+                                <td>
+                                    <input type="hidden" value="{{ $order_details->id_SP }}" name="order_product_id">
+                                    {{ $order_details->product_name }}
+                                </td>
+                                <td style="text-align:center">
+                                    <input type="hidden" value="{{ $order_details->product_qty }}" name="product_quantity">
+                                    {{ $order_details->product_qty }}
+                                </td>
                                 <td>
                                     @if($order_details->product_coupon != '')
                                         {{ $order_details->product_coupon }}
@@ -207,12 +213,30 @@
                     </tbody>
                 </table>
             </div>
-
+            <div class="card-footer">
+                @foreach($order as $key => $or)
+                    @if($or->order_status == 1)
+                        <form>
+                            @csrf
+                            <select class="form-control order_details">
+                                <option id="{{ $or->id }}" selected value="1">Chưa xư lý</option>
+                                <option id="{{ $or->id }}" value="2">Đã giao hàng</option>
+                            </select>
+                        </form>
+                    @else
+                        <form>
+                            @csrf
+                            <select class="form-control order_details">
+                                <option disabled id="{{ $or->id }}" value="1">Chưa xư lý</option>
+                                <option id="{{ $or->id }}" selected value="2">Đã giao hàng</option>
+                            </select>
+                        </form>
+                    @endif
+                @endforeach
+            </div>
             <!-- /.card-body -->
-
         </div>
         <!-- /.card -->
-
     </section>
     <!-- /.content -->
 </div>

@@ -59,10 +59,14 @@ Route::get('/delete-coupon/{id}', [CouponController::class,'delete_coupon']);
 //ORDERS
 Route::get('/list-orders', [OrderController::class,'list_orders']);
 Route::get('/view-orders/{order_code}', [OrderController::class,'view_orders']);
+Route::post('/update-cart', [OrderController::class,'update_cart']);
 
 //USERS
 Route::get('/list-user', [UserController::class,'list_user']);
 Route::get('/delete-user/{id}', [UserController::class,'delete_user']);
+
+//CHART
+Route::post('/filter-by-date', [MyAdmin::class,'filter_by_date']);
 
 
 

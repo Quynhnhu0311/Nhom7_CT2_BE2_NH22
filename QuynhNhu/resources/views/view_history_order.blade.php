@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <h3 class="breadcrumb-header">Detail Cart</h3>
                 <ul class="breadcrumb-tree">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/history">View Cart</a></li>
                     <li class="active">Info</li>
                 </ul>
             </div>

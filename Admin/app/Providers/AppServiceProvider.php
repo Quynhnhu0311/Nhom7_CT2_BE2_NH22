@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use DB;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', function($view){
+            $product = DB::table('products')->get()->count();
+            $protype = DB::table('protypes')->get()->count();
+            $manufacture = DB::table('manufactures')->get()->count();
+
+            $view->with('product',$product)
+                ->with('protype',$protype)
+                ->with('manufacture',$manufacture);
+        });
     }
 }

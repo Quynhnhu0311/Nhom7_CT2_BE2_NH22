@@ -36,11 +36,11 @@
 							<div class="checkbox-filter">
                                 @foreach($type_product as $key => $type)
 								<div class="input-checkbox">
-									<input type="checkbox" id="category-1">
+									<input type="checkbox" id="category-1" value="{{ $type->id }}">
 									<label for="category-1">
 										<span></span>
 										{{ $type->type_name }}
-										<small>(120)</small>
+										<small>({{$type_qty}})</small>
 									</label>
 								</div>
                                 @endforeach
@@ -78,10 +78,11 @@
 							<div class="checkbox-filter">
                                 @foreach($manu_product as $key => $manu)
 								<div class="input-checkbox">
-									<input type="checkbox" id="brand-1">
+									<input type="checkbox" id="brand-1" value="{{ $type->id }}">
 									<label for="brand-1">
 										<span></span>
 										{{ $manu->manu_name }}
+                                        <small>({{$manu_qty}})</small>
 									</label>
 								</div>
                                 @endforeach
@@ -112,31 +113,6 @@
 
 					<!-- STORE -->
 					<div id="store" class="col-md-9">
-						<!-- store top filter -->
-						<div class="store-filter clearfix">
-							<div class="store-sort">
-								<label>
-									Sort By:
-									<select class="input-select">
-										<option value="0">Popular</option>
-										<option value="1">Position</option>
-									</select>
-								</label>
-
-								<label>
-									Show:
-									<select class="input-select">
-										<option value="0">20</option>
-										<option value="1">50</option>
-									</select>
-								</label>
-							</div>
-							<ul class="store-grid">
-								<li class="active"><i class="fa fa-th"></i></li>
-								<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store top filter -->
 
 						<!-- store products -->
 						<div class="row">

@@ -49,6 +49,11 @@ class ProtypeController extends Controller
 
     public function delete_protype($id) {
         $this->AuthLogin();
+
+        $coupon = DB::table('coupons')->where('coupon_code',$order->order_code)->first();
+        $coupon->coupon_time = $coupon->coupon_time - 1;
+        $coupon->save();
+
         DB::table('protypes')->where('id',$id)->delete();
         Session::put('message','Xóa danh mục thành công');
         return Redirect::to('protypes');

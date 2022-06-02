@@ -402,7 +402,7 @@
             for(var count = 1; count<=index; count++){
                 $('#' + product_id + '-' + count).css('color','#D10024');
             }
-        });
+        }); 
 
         $(document).on('mouseleave', '.rating', function() {
             var index = $(this).data('index');
