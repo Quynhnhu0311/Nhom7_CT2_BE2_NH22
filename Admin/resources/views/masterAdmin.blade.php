@@ -214,18 +214,6 @@
                     </div>
                 </div>
 
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -273,7 +261,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/list-user" class="nav-link active">
+                                    <a href="/list-user" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Users</p>
                                     </a>
@@ -416,7 +404,8 @@
             data: [
                 {label:"Products", value:<?php echo $product ?>, color:colorDanger},
                 {label:"Protypes", value:<?php echo $protype ?>},
-                {label:"Manufactures", value:<?php echo $manufacture ?>}
+                {label:"Manufactures", value:<?php echo $manufacture ?>},
+                {label:"Coupons", value:<?php echo $coupon ?>}
             ]
             });
         });
