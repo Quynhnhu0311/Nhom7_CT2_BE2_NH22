@@ -31,8 +31,8 @@ class CouponController extends Controller
     }
 
     function list_coupon() {
-        $coupon = Coupon::orderby('id','DESC')->get();
-        return view('/list_coupon')->with(compact('coupon'));
+        $coupons = DB::table('coupons')->orderby('id','DESC')->get();
+        return view('/list_coupon')->with(compact('coupons'));
     }
 
     function delete_coupon($id) {
