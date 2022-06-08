@@ -65,7 +65,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($coupon as $key => $cp)
+                        @foreach($coupons as $key => $cp)
                             <tr>
                                 <td>{{ $cp->id }}</td>
                                 <td><a>{{ $cp->coupon_name }}</a><br /></td>
