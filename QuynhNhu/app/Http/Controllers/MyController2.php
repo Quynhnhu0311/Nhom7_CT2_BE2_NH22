@@ -45,6 +45,8 @@ class MyController2 extends Controller
         $type_product = DB::table('protypes')->orderby('id','desc')->get();
         $manu_product = DB::table('manufactures')->orderby('id','desc')->get();
         $topSell = DB::table('products')->where('id','<',5)->get();
+        $type_qty = DB::table('protypes')->get()->count();
+        $manu_qty = DB::table('manufactures')->get()->count();
 
         if($search != ""){
             $searchProduct = Product::where(function($query) use($search){
@@ -60,7 +62,9 @@ class MyController2 extends Controller
         return view('search')->with('data',$searchProduct)
                                 ->with('type_product',$type_product)
                                 ->with('manu_product',$manu_product)
-                                ->with('topSell',$topSell);
+                                ->with('topSell',$topSell)
+                                ->with('type_qty',$type_qty)
+                                ->with('manu_qty',$manu_qty);
     }
 
     function checkout() {
