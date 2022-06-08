@@ -30,21 +30,19 @@ class ProtypeController extends Controller
         $manu_product = DB::table('manufactures')->orderby('id','desc')->get();
         $type_qty = DB::table('protypes')->get()->count();
         $manu_qty = DB::table('manufactures')->get()->count();
-
-
-        //$type_by_id_product = Product::with('protypes')->where('type_id',$id)->orderBy('id','DESC');
-
         $topSell = DB::table('products')->where('id','<',5)->get();
 
         $detail_product = DB::table('products')->join('protypes','protypes.id','=','products.type_id')
                                                 ->join('manufactures','manufactures.id','=','products.manu_id')
-                                                ->where('products.id',$id)->get();
+                                                ->where('products.id',$id)->paginate(4);
+
         foreach($detail_product as $key => $value) {
             $type_id = $value->id;
         }
         $related_product = DB::table('products')->join('protypes','protypes.id','=','products.type_id')
                                                 ->join('manufactures','manufactures.id','=','products.manu_id')
-                                                ->where('protypes.id',$type_id)->get();
+                                                ->where('protypes.id',$type_id)->paginate(4);
+
         return view('store')->with('type_product',$type_product)
                                 ->with('manu_product',$manu_product)
                                 ->with('type_by_id',$type_by_id)
