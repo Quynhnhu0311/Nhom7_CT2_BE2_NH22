@@ -207,6 +207,10 @@
                                         ?>
                                     @endif
                                     {{ number_format($total_coupon) }} VND
+                                    <?php
+                                        $total_cart = 0;
+                                        $total_cart += $total_coupon;
+                                    ?>
                                 </td>
                             </tr>
                         @endforeach
@@ -214,6 +218,7 @@
                 </table>
             </div>
             <div class="card-footer">
+                <h3 class="card-title" style="font-weight:bold;">Status Cart</h3>
                 @foreach($order as $key => $or)
                     @if($or->order_status == 1)
                         <form>
