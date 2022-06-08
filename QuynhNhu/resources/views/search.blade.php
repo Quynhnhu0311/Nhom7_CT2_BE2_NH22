@@ -36,11 +36,11 @@
 							<div class="checkbox-filter">
                                 @foreach($type_product as $key => $type)
 								<div class="input-checkbox">
-									<input type="checkbox" id="category-1">
+									<input type="checkbox" id="category-1" value="{{ $type->id }}">
 									<label for="category-1">
 										<span></span>
 										{{ $type->type_name }}
-										<small>(120)</small>
+										<small>({{$type_qty}})</small>
 									</label>
 								</div>
                                 @endforeach
@@ -51,20 +51,24 @@
 						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Price</h3>
-							<div class="price-filter">
-								<div id="price-slider"></div>
-								<div class="input-number price-min">
-									<input id="price-min" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
-								<span>-</span>
-								<div class="input-number price-max">
-									<input id="price-max" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
-							</div>
+                            <form>
+                                <div id="slider-range"></div>
+                                <style>
+                                    .style-range p {
+                                        float: left;
+                                        width: 50%;
+                                    }
+                                </style>
+                                <div class="style-range">
+                                    <p><input type="text" id="amount_start" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
+                                    <p><input type="text" id="amount_end" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
+                                </div>
+                                <input type="hidden" name="start_price" id="start_price">
+                                <input type="hidden" name="end_price" id="end_price">
+                                <br>
+                                <div class="clearfix"></div>
+                                <input type="submit" name="filter_price" value="Lọc Giá" class="btn btn-default">
+                            </form>
 						</div>
 						<!-- /aside Widget -->
 
@@ -74,11 +78,11 @@
 							<div class="checkbox-filter">
                                 @foreach($manu_product as $key => $manu)
 								<div class="input-checkbox">
-									<input type="checkbox" id="brand-1">
+									<input type="checkbox" id="brand-1" value="{{ $type->id }}">
 									<label for="brand-1">
 										<span></span>
 										{{ $manu->manu_name }}
-										<small>(578)</small>
+                                        <small>({{$manu_qty}})</small>
 									</label>
 								</div>
                                 @endforeach
@@ -110,32 +114,6 @@
 
 					<!-- STORE -->
 					<div id="store" class="col-md-9">
-						<!-- store top filter -->
-						<div class="store-filter clearfix">
-							<div class="store-sort">
-								<label>
-									Sort By:
-									<select class="input-select">
-										<option value="0">Popular</option>
-										<option value="1">Position</option>
-									</select>
-								</label>
-
-								<label>
-									Show:
-									<select class="input-select">
-										<option value="0">20</option>
-										<option value="1">50</option>
-									</select>
-								</label>
-							</div>
-							<ul class="store-grid">
-								<li class="active"><i class="fa fa-th"></i></li>
-								<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store top filter -->
-
 						<!-- store products -->
 						<div class="row">
 							<!-- product -->
