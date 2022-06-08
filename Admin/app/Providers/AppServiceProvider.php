@@ -29,10 +29,12 @@ class AppServiceProvider extends ServiceProvider
             $product = DB::table('products')->get()->count();
             $protype = DB::table('protypes')->get()->count();
             $manufacture = DB::table('manufactures')->get()->count();
+            $coupon = DB::table('coupons')->get()->count();
 
             $view->with('product',$product)
                 ->with('protype',$protype)
-                ->with('manufacture',$manufacture);
+                ->with('manufacture',$manufacture)
+                ->with('coupon',$coupon);
         });
     }
 }
