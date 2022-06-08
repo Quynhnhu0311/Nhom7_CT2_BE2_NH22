@@ -1,27 +1,6 @@
 @extends('master')
 @section('content')
 
-		<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="breadcrumb-tree">
-							<li><a href="/">Home</a></li>
-							<li><a href="#">All Products</a></li>
-							<li><a href="#">Headphones</a></li>
-							<li class="active">Product name goes here</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /BREADCRUMB -->
-
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -51,7 +30,6 @@
                         <!-- /Product thumb imgs -->
 
                         <!-- Product details -->
-
                         <div class="col-md-5">
                             <div class="product-details">
                                 <h2 class="product-name">{{ $detail->name }}</h2>
