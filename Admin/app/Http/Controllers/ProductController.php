@@ -82,7 +82,6 @@ class ProductController extends Controller
         $data['type_id'] = $request->type;
         $data['price'] = $request->price;
         $data['discription'] = $request->discrip;
-        $data['discount'] = $request->discount;
         $get_image = $request->file('product_image');
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
