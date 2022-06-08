@@ -23,8 +23,9 @@ class MyAdmin extends Controller
         $product = DB::table('products')->get()->count();
         $protype = DB::table('protypes')->get()->count();
         $manufacture = DB::table('manufactures')->get()->count();
+        $coupon = DB::table('coupons')->get()->count();
 
-        return view('index')->with(compact('product','protype','manufacture'));
+        return view('index')->with(compact('product','protype','manufacture','coupon'));
     }
 
     function AuthLogin() {
