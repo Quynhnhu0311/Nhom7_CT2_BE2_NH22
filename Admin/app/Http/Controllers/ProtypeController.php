@@ -35,7 +35,10 @@ class ProtypeController extends Controller
         $this->AuthLogin();
         $edit_protype = DB::table('protypes')->where('id',$id)->get();
         $all_Protype = view('edit_protype')->with('edit_protype',$edit_protype);
-        return view('masterAdmin')->with('edit_protype',$all_Protype);
+        $coupon = DB::table('coupons')->get()->count();
+
+        return view('masterAdmin')->with('edit_protype',$all_Protype)
+                                    ->with('coupon',$coupon);
     }
 
     public function update_protype(Request $request, $id) {
