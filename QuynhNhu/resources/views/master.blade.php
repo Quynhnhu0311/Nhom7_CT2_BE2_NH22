@@ -108,8 +108,6 @@
                             {{ csrf_field() }}
                                 <select class="input-select">
                                     <option value="0">All Products</option>
-                                    <option value="1">Category 01</option>
-                                    <option value="1">Category 02</option>
                                 </select>
                                 <input class="input" name="key" placeholder="Search here">
                                 <button class="search-btn">Search</button>
@@ -402,7 +400,7 @@
             for(var count = 1; count<=index; count++){
                 $('#' + product_id + '-' + count).css('color','#D10024');
             }
-        }); 
+        });
 
         $(document).on('mouseleave', '.rating', function() {
             var index = $(this).data('index');
