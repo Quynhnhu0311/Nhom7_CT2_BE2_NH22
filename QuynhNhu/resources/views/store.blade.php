@@ -1,26 +1,6 @@
 @extends('master')
 @section('content')
 
-		<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">All Products</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li class="active">Headphones (227,490 Results)</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /BREADCRUMB -->
 
 		<!-- SECTION -->
 		<div class="section">
@@ -78,11 +58,10 @@
 							<div class="checkbox-filter">
                                 @foreach($manu_product as $key => $manu)
 								<div class="input-checkbox">
-									<input type="checkbox" id="brand-1" value="{{ $type->id }}">
+									<input type="checkbox" id="brand-1" value="{{$manu->id}}">
 									<label for="brand-1">
 										<span></span>
 										{{ $manu->manu_name }}
-                                        <small>({{$manu_qty}})</small>
 									</label>
 								</div>
                                 @endforeach
