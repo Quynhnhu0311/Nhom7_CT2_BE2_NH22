@@ -70,10 +70,6 @@
                   <input type="text" id="inputProjectLeader" class="form-control" name="price" value="{{ $edit_value->price }}">
                 </div>
                 <div class="form-group">
-                    <label for="inputClientCompany">Discount</label>
-                    <input type="number" id="inputProjectLeader" class="form-control" name="discount" value="{{ $edit_value->discount }}">
-                </div>
-                <div class="form-group">
                   <label for="inputProjectLeader">Description</label>
                   <textarea id="inputDescription" class="form-control" rows="4" name="discrip">{{ $edit_value->discription }}</textarea>
                 </div>
